@@ -1,0 +1,7 @@
+{
+  "name": "LaundryExpo",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
