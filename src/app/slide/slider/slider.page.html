@@ -1,0 +1,76 @@
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="background"></div>
+  <div class="consent-container">
+    <img src="../../../assets/icon.png" alt="Consent Image" class="consent-image">
+    <div class="consent-text">
+      Selamat Datang
+    </div>
+    <br>
+    <div class="consent-description">
+      Pagi hari minum kopi,<br>
+      Tak lupa makan roti panggang.<br>
+      Baju kotor jangan dicemaskan lagi,<br>
+      Buka Washup, semua noda langsung hilang!
+    </div>
+    <div class="consent-buttons">
+      <ion-button color="light" shape="round" routerLink="/login">Lanjut</ion-button>
+    </div>
+  </div>
+</ion-content>
+
+<style>
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('assets/background.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: -1;
+}
+
+.consent-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 20px;
+  text-align: center;
+}
+
+.consent-image {
+  width: 300px; /* Atur ukuran gambar sesuai keinginan */
+  height: auto;
+}
+
+.consent-text {
+  color: white;
+  font-size: 25px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.consent-description {
+  color: white;
+  font-size: 15px;
+  margin-top: 20px;
+  line-height: 1.5;
+  max-width: 300px; /* This ensures the text does not stretch too wide */
+  text-align: left; /* Align text to the left */
+  margin: 0 auto; /* Center the block with auto margin */
+}
+
+.consent-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+ion-button {
+  padding: 0 20px;
+}
+</style>

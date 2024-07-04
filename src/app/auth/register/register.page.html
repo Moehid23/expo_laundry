@@ -1,0 +1,156 @@
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="background">
+    <div class="container">
+      <div class="logo-container">
+        <h1>REGISTER</h1>
+        <ion-card class="card transparent-card">
+          <!-- Logo Laundry -->
+          <img src="../../assets/logo.png" class="logo-card">
+          <ion-card-content>
+            <form (ngSubmit)="register()">
+              <div class="input-container">
+                <ion-icon name="person-outline" class="input-icon"></ion-icon>
+                <ion-input [(ngModel)]="nama" name="nama" required placeholder="Masukkan Nama Anda" class="custom-input"></ion-input>
+              </div>
+              <br>
+              <div class="input-container">
+                <ion-icon name="call-outline" class="input-icon"></ion-icon>
+                <ion-input [(ngModel)]="contact" name="contact" type="tel" required placeholder="Masukkan Nomor Telepon" class="custom-input"></ion-input>
+              </div>
+              <br>
+              <div class="input-container">
+                <ion-icon name="mail-outline" class="input-icon"></ion-icon>
+                <ion-input [(ngModel)]="email" name="email" required type="email" placeholder="Masukkan Email" class="custom-input"></ion-input>
+              </div>
+              <br>
+              <div class="input-container">
+                <ion-icon name="lock-closed-outline" class="input-icon"></ion-icon>
+                <ion-input [(ngModel)]="password" name="password" required type="password" placeholder="Masukkan Password" class="custom-input" #passwordInput>
+                  <ion-icon slot="end" class="eye-icon" [name]="passwordFieldType === 'password' ? 'eye-off' : 'eye'" (click)="togglePasswordVisibility(passwordInput)"></ion-icon>
+                </ion-input>
+              </div>
+              <br>
+              <ion-button class="full-width-button" color="light" fill="outline" type="submit">Daftar</ion-button>
+            </form>
+          </ion-card-content>
+        </ion-card>
+
+        <!-- Tulisan "Sudah punya akun? Login sekarang!" -->
+        <br>
+        <div class="login-text">
+          Sudah punya akun? <a routerLink="/login" class="login-link">Login sekarang!</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+<style>
+  .background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh; /* Menggunakan 100vh untuk tinggi viewport */
+    background-image: url('../../assets/background.jpg');
+    /* Sesuaikan path dengan lokasi gambar Anda */
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center; /* Mengatur logo-container ke tengah vertikal */
+    justify-content: center; /* Mengatur logo-container ke tengah horizontal */
+    background-position: center; /* Memusatkan latar belakang */
+    z-index: -1;
+  }
+
+  .full-width-button {
+    width: 100%;
+  }
+
+  .card {
+    width: 75%; /* Sesuaikan dengan lebar yang diinginkan */
+    max-width: 500px; /* Optional: untuk membatasi lebar maksimal */
+    margin: 0 auto; /* Untuk memusatkan card */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Bayangan warna hitam */
+  }
+
+  .transparent-card {
+    background: rgba(255, 255, 255, 0.2); /* Warna latar belakang putih dengan transparansi 20% */
+    backdrop-filter: blur(10px); /* Efek blur untuk latar belakang */
+    border: 1px solid rgba(255, 255, 255, 0.3); /* Warna garis pinggir dengan transparansi */
+  }
+
+  .input-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+
+  .input-icon {
+    color: #fff; /* Warna ikon input */
+    margin-right: 10px;
+    font-size: 24px; /* Ukuran font ikon */
+  }
+
+  .eye-icon {
+    color: white;
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    z-index: 10; /* Pastikan z-index cukup tinggi agar dapat diklik */
+    pointer-events: auto; /* Pastikan pointer-events diatur ke auto */
+  }
+
+  .white-text {
+    color: white !important; /* Warna teks input */
+  }
+
+  ::placeholder {
+    color: white; /* Warna placeholder */
+    opacity: 1; /* Full opacity untuk placeholder */
+  }
+
+  ion-input {
+    --placeholder-color: white;
+  }
+
+  ion-input .native-input {
+    color: white !important; /* Warna teks input */
+  }
+
+  /* Gaya tambahan untuk teks menjadi putih dan tebal */
+  .header-title,
+  .login-text,
+  .input-container ion-input {
+    color: white;
+    font-weight: bold;
+  }
+
+  .login-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .login-text a {
+    color: blue;
+    font-weight: bold;
+    text-decoration: underline;
+  }
+
+h1 {
+  color: white; /* Warna teks putih */
+  font-size: 2.5em; /* Ukuran font diperbesar (misalnya 2.5em) */
+  font-weight: bold; /* Menjadikan teks tebal */
+  text-align: center; /* Menengahkan teks */
+}
+
+
+  /* Kustomisasi garis pinggir berwarna putih pada input */
+  ::ng-deep .custom-input .native-input {
+    border: 2px solid white; /* Warna garis pinggir */
+    padding: 10px; /* Tambahkan padding untuk ruang antara teks dan garis pinggir */
+    border-radius: 4px; /* Optional: untuk membulatkan sudut */
+  }
+</style>

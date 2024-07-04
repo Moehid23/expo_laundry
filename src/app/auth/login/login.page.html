@@ -1,0 +1,238 @@
+<ion-content [fullscreen]="true" class="ion-padding">
+  <div class="background">
+    <div class="container">
+      <div class="logo-container">
+        <h1>LOGIN</h1>
+        <ion-card class="card transparent-card">
+          <!-- Logo Laundry -->
+          <img src="../../assets/logo.png" class="logo-card">
+          <ion-card-content>
+            <form (ngSubmit)="login()">
+              <div class="input-container">
+                <ion-icon name="mail-outline" class="input-icon"></ion-icon>
+                <ion-input [(ngModel)]="loginData.email" name="email" type="email" placeholder="Masukan Email" class="custom-input"></ion-input>
+              </div>
+              <br>
+              <div class="input-container">
+                <ion-icon name="lock-closed-outline" class="input-icon"></ion-icon>
+                <ion-input [(ngModel)]="loginData.password" [type]="passwordFieldType" name="password" placeholder="Masukan Password" class="custom-input"></ion-input>
+                <ion-icon [name]="passwordFieldType === 'password' ? 'eye-off' : 'eye'" class="eye-icon" (click)="togglePasswordVisibility()"></ion-icon>
+              </div>
+              <br>
+              <ion-button class="full-width-button" color="light" fill="outline" type="submit">Masuk</ion-button>
+            </form>
+          </ion-card-content>
+        </ion-card>
+
+        <!-- Tulisan "Belum punya akun? Registrasi sekarang!" -->
+        <br>
+        <div class="register-text">
+          Belum punya akun? <a routerLink="/register" class="register-link">Registrasi sekarang!</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+<style>
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh; /* Menggunakan 100vh untuk tinggi viewport */
+  background-image: url('../../assets/background.jpg');
+  /* Sesuaikan path dengan lokasi gambar Anda */
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center; /* Mengatur logo-container ke tengah vertikal */
+  justify-content: center; /* Mengatur logo-container ke tengah horizontal */
+  background-position: center; /* Memusatkan latar belakang */
+  z-index: -1;
+}
+
+.full-width-button {
+  width: 100%;
+}
+
+.card {
+  width: 75%; /* Sesuaikan dengan lebar yang diinginkan */
+  max-width: 500px; /* Optional: untuk membatasi lebar maksimal */
+  margin: 0 auto; /* Untuk memusatkan card */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Bayangan warna hitam */
+
+}
+
+.transparent-card {
+  background: rgba(255, 255, 255, 0.2); /* Warna latar belakang putih dengan transparansi 20% */
+  backdrop-filter: blur(10px); /* Efek blur untuk latar belakang */
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Warna garis pinggir dengan transparansi */
+}
+
+.input-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.input-icon {
+  color: #fff; /* Warna ikon input */
+  margin-right: 10px;
+  font-size: 24px; /* Ukuran font ikon */
+}
+
+
+
+.eye-icon {
+  color: white;
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+  z-index: 10; /* Pastikan z-index cukup tinggi agar dapat diklik */
+  pointer-events: auto; /* Pastikan pointer-events diatur ke auto */
+}
+
+.white-text {
+  color: white !important; /* Warna teks input */
+}
+
+::placeholder {
+  color: white; /* Warna placeholder */
+  opacity: 1; /* Full opacity untuk placeholder */
+}
+
+ion-input {
+  --placeholder-color: white;
+}
+
+ion-input .native-input {
+  color: white !important; /* Warna teks input */
+}
+
+/* Gaya tambahan untuk teks menjadi putih dan tebal */
+.header-title,
+.register-text,
+.input-container ion-input {
+  color: white;
+  font-weight: bold;
+}
+
+.register-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.register-text a {
+  color: blue;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+/* Kustomisasi garis pinggir berwarna putih pada input */
+::ng-deep .custom-input .native-input {
+  border: 2px solid white; /* Warna garis pinggir */
+  padding: 10px; /* Tambahkan padding untuk ruang antara teks dan garis pinggir */
+  border-radius: 4px; /* Optional: untuk membulatkan sudut */
+}
+
+.fab-tab {
+  position: absolute;
+  bottom: -40px; /* Sesuaikan jarak dengan footer */
+  left: 90%;
+  transform: translateX(-50%);
+  z-index: 999; /* Tetapkan z-index agar muncul di depan konten lain */
+}
+
+.fab-icon {
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 1px;
+}
+
+ion-tab-button[selected] .tab-icon {
+  filter: brightness(0) invert(1); /* Adjust the color of the icon when selected */
+  transform: scale(1.2); /* Scale up the icon when selected */
+}
+
+.tab-icon {
+  transition: transform 0.3s ease, filter 0.3s ease; /* Add transition for transform and filter properties */
+}
+
+.tab-bar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tab-button.left {
+  flex: 1;
+  text-align: left;
+}
+
+.tab-button.right {
+  flex: 1;
+  text-align: right;
+}
+
+.google-register {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.google-register {
+  text-align: center;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.google-register p {
+  color: white;
+  font-weight: bold;
+}
+
+.google-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  background-color: white; /* Set the background color to white */
+  color: black; /* Set the text color to black */
+  border: none;
+}
+
+.google-button:hover {
+  background-color: #f0f0f0; /* Change background color on hover */
+}
+
+.google-logo {
+  width: 20px;
+  margin-right: 10px;
+}
+
+h1 {
+  color: white; /* Warna teks putih */
+  font-size: 2.5em; /* Ukuran font diperbesar (misalnya 2.5em) */
+  font-weight: bold; /* Menjadikan teks tebal */
+}
+
+/* Gaya tambahan untuk .header-title */
+.header-title {
+  font-size: 2.5em; /* Ukuran font diperbesar (misalnya 2.5em) */
+  font-weight: bold; /* Menjadikan teks tebal */
+}
+
+/* Penyesuaian untuk judul yang menggunakan .header-title */
+.logo-container h1 {
+  font-size: 2.5em; /* Ukuran font diperbesar (misalnya 2.5em) */
+  font-weight: bold; /* Menjadikan teks tebal */
+  text-align: center; /* Menengahkan teks jika diperlukan */
+  color: white; /* Warna teks putih */
+}
+</style>
